@@ -6,8 +6,8 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import pdf.kit.component.PDFHeaderFooter;
 import pdf.kit.component.PDFKit;
 import pdf.kit.component.chart.ScatterPlotChart;
-import pdf.kit.component.chart.model.XYLine;
 import pdf.kit.component.chart.impl.DefaultLineChart;
+import pdf.kit.component.chart.model.XYLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class ReportKit360 {
             PDFKit kit=new PDFKit();
             kit.setHeaderFooterBuilder(headerFooter);
             //设置输出路径
-            kit.setSaveFilePath("/Users/fgm/Desktop/pdf/hello.pdf");
+            kit.setSaveFilePath(templatePath+fileName);
 
             String saveFilePath=kit.exportToFile(fileName,data);
             return  saveFilePath;
@@ -68,12 +68,13 @@ public class ReportKit360 {
         templateBO.setFreeMarkerUrl("http://www.zheng-hang.com/chm/freemarker2_3_24/ref_directive_if.html");
         templateBO.setITEXTUrl("http://developers.itextpdf.com/examples-itext5");
         templateBO.setJFreeChartUrl("http://www.yiibai.com/jfreechart/jfreechart_referenced_apis.html");
-        templateBO.setImageUrl("http://mss.vip.sankuai.com/v1/mss_74e5b6ab17f44f799a524fa86b6faebf/360report/logo_1.png");
+        templateBO.setImageUrl("https://s0.meituan.net/bs/fe-web-meituan/404d350/img/logo.png");
         List<String> scores=new ArrayList<String>();
         scores.add("90");
         scores.add("95");
         scores.add("98");
         templateBO.setScores(scores);
+
         //折线图
         List<XYLine> lineList=getTemperatureLineList();
         DefaultLineChart lineChart=new DefaultLineChart();
@@ -85,17 +86,8 @@ public class ReportKit360 {
         //散点图
         String scatterUrl=ScatterPlotChart.draw(ScatterPlotChartTest.getData(),1,"他评得分(%)","自评得分(%)");
         templateBO.setScatterUrl(scatterUrl);
-        String templatePath="/Users/fgm/workspaces/fix/pdf-kit/src/test/resources/templates";
+        String templatePath="/Users/raywang/Downloads/";
         String path= kit.createPDF(templatePath,templateBO,"hello.pdf");
         System.out.println(path);
-
-
-
     }
-
-
-
-
-
-
 }

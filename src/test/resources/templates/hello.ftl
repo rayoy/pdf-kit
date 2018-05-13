@@ -49,10 +49,7 @@
         <div><p>${item}</p></div>
     </#list>
     </div>
-
 </div>
-
-
 <!--第二页结束-->
 </body>
 </html>

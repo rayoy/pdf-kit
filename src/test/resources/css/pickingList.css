@@ -1,0 +1,12 @@
+table{
+    border: 1px solid #e8e5eb;
+}
+
+table {
+    width: 100%;
+    min-height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-collapse: collapse;
+    padding: 2px;
+}
